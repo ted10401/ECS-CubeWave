@@ -283,9 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec917e960b7984472a49ca06ff59bebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_type: 0
+  m_type: 3
   m_camera: {fileID: 416734948}
-  m_waveSize: 10
+  m_waveSize: 100
   m_waveSpeed: 5
 --- !u!4 &933678365
 Transform:

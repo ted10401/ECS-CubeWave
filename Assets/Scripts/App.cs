@@ -11,6 +11,9 @@ public class App : MonoBehaviour
 
     private void Awake()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 9999;
+
         m_camera.orthographicSize = 4 + ((float)m_waveSize - 10) * 0.4f;
 
         switch (m_type)
