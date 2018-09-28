@@ -47,4 +47,6 @@ public abstract class BaseController
     {
         return Vector3.Distance(m_centerPosition, GetPosition(x, y));
     }
+
+    public virtual void Destroy() { }
 }

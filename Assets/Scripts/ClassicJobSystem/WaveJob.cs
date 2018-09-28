@@ -2,7 +2,7 @@
 using UnityEngine.Jobs;
 using Unity.Collections;
 
-public struct MovementJob : IJobParallelForTransform
+public struct WaveJob : IJobParallelForTransform
 {
     public NativeArray<float> ditances;
     public float speed;

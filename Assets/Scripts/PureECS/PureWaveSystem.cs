@@ -8,13 +8,13 @@ using UnityEngine;
 
 namespace Samples.Common
 {
-    public class JobWaveSystem : JobComponentSystem
+    public class PureWaveSystem : JobComponentSystem
     {
         [BurstCompile]
         struct WaveJob : IJobParallelFor
         {
             public ComponentDataArray<Position> positions;
-            [ReadOnly] public ComponentDataArray<WaveData> waveDatas;
+            [ReadOnly] public ComponentDataArray<PureWave> waveDatas;
             public float time;
 
             public void Execute(int i)
@@ -31,7 +31,7 @@ namespace Samples.Common
         protected override void OnCreateManager()
         {
             m_componentGroup = GetComponentGroup(
-                ComponentType.ReadOnly(typeof(WaveData)),
+                ComponentType.ReadOnly(typeof(PureWave)),
                 typeof(Position));
         }
 
@@ -40,7 +40,7 @@ namespace Samples.Common
             var job = new WaveJob
             {
                 positions = m_componentGroup.GetComponentDataArray<Position>(),
-                waveDatas = m_componentGroup.GetComponentDataArray<WaveData>(),
+                waveDatas = m_componentGroup.GetComponentDataArray<PureWave>(),
                 time = Time.realtimeSinceStartup
             };
 

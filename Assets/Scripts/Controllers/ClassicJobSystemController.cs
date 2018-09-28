@@ -13,7 +13,7 @@ public class ClassicJobSystemController : BaseController
 
     protected TransformAccessArray m_transformAccessArray = new TransformAccessArray(0, -1);
     private NativeArray<float> m_distanceArray;
-    private MovementJob m_job;
+    private WaveJob m_job;
     private JobHandle m_jobHandle;
 
     public ClassicJobSystemController(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
@@ -23,13 +23,6 @@ public class ClassicJobSystemController : BaseController
         m_prefab = Resources.Load<GameObject>("Cube");
 
         CreateCubes();
-    }
-
-    ~ClassicJobSystemController()
-    {
-        m_distanceArray.Dispose();
-        m_transformAccessArray.Dispose();
-        m_jobHandle.Complete();
     }
 
     public override void CreateCube(int x, int y)
@@ -52,10 +45,17 @@ public class ClassicJobSystemController : BaseController
     {
         m_jobHandle.Complete();
 
-        m_job = new MovementJob();
+        m_job = new WaveJob();
         m_job.ditances = m_distanceArray;
         m_job.time = Time.realtimeSinceStartup;
         m_job.speed = m_waveSpeed;
         m_jobHandle = m_job.Schedule(m_transformAccessArray);
+    }
+
+    public override void Destroy()
+    {
+        m_distanceArray.Dispose();
+        m_transformAccessArray.Dispose();
+        m_jobHandle.Complete();
     }
 }

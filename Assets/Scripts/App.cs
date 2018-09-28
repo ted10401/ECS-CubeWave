@@ -34,4 +34,9 @@ public class App : MonoBehaviour
     {
         m_controller.Tick();
     }
+
+    private void OnDisable()
+    {
+        m_controller.Destroy();
+    }
 }

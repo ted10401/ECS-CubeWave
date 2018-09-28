@@ -24,7 +24,7 @@ public class PureECSController : BaseController
     {
         var entity = m_entityManager.CreateEntity(
                     ComponentType.Create<Position>(),
-                    ComponentType.Create<WaveData>(),
+                    ComponentType.Create<PureWave>(),
                     ComponentType.Create<MeshInstanceRenderer>()
                 );
 
@@ -33,7 +33,7 @@ public class PureECSController : BaseController
             Value = GetPosition(x, y) - m_centerPosition
         });
 
-        m_entityManager.SetComponentData(entity, new WaveData
+        m_entityManager.SetComponentData(entity, new PureWave
         {
             speed = m_waveSpeed,
             distance = GetDistance(x, y)

@@ -2,10 +2,10 @@
 using Unity.Entities;
 
 [Serializable]
-public struct WaveData : IComponentData
+public struct PureWave : IComponentData
 {
     public float speed;
     public float distance;
 }
 
-public class WaveDataComponent : ComponentDataWrapper<WaveData> { }
+public class PureWaveComponent : ComponentDataWrapper<PureWave> { }
