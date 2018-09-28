@@ -4,13 +4,13 @@ using Unity.Transforms;
 using Unity.Rendering;
 using Unity.Mathematics;
 
-public class PureECSController : BaseController
+public class PureECSWave : BaseWave
 {
     private EntityManager m_entityManager;
     private Mesh m_mesh;
     private Material m_material;
 
-    public PureECSController(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
+    public PureECSWave(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
     {
         m_entityManager = World.Active.GetOrCreateManager<EntityManager>();
         GameObject prefab = Resources.Load<GameObject>("Cube");

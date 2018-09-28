@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class HybridECSController : BaseController
+public class HybridECSWave : BaseWave
 {
     private GameObject m_prefab;
 
-    public HybridECSController(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
+    public HybridECSWave(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
     {
         m_prefab = Resources.Load<GameObject>("HybridECSCube");
 

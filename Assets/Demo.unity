@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec917e960b7984472a49ca06ff59bebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_type: 1
+  m_type: 3
   m_camera: {fileID: 201098698}
   m_waveSize: 100
   m_waveSpeed: 5

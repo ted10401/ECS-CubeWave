@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ClassicController : BaseController
+public class ClassicWave : BaseWave
 {
     private GameObject m_prefab;
     private GameObject[] m_cubes;
@@ -8,7 +8,7 @@ public class ClassicController : BaseController
     private float m_cacheTime;
     private Vector3 m_cachePosition;
 
-    public ClassicController(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
+    public ClassicWave(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
     {
         m_cubes = new GameObject[m_waveSize * m_waveSize];
         m_distances = new float[m_waveSize * m_waveSize];

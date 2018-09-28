@@ -1,5 +1,5 @@
 ﻿
-public enum ExecuteType
+public enum WaveType
 {
     Classic,
     HybridECS,

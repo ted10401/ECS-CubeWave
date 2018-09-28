@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public abstract class BaseController
+public abstract class BaseWave
 {
     protected Transform m_parent;
     protected int m_waveSize;
     protected float m_waveSpeed;
     protected Vector3 m_centerPosition;
 
-    public BaseController(Transform parent, int waveSize, float waveSpeed)
+    public BaseWave(Transform parent, int waveSize, float waveSpeed)
     {
         m_parent = parent;
         m_waveSize = waveSize;

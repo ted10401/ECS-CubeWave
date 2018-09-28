@@ -3,7 +3,7 @@ using Unity.Jobs;
 using UnityEngine.Jobs;
 using Unity.Collections;
 
-public class ClassicJobSystemController : BaseController
+public class ClassicJobSystemWave : BaseWave
 {
     private GameObject m_prefab;
     private GameObject[] m_cubes;
@@ -16,7 +16,7 @@ public class ClassicJobSystemController : BaseController
     private WaveJob m_job;
     private JobHandle m_jobHandle;
 
-    public ClassicJobSystemController(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
+    public ClassicJobSystemWave(Transform parent, int waveSize, float waveSpeed) : base(parent, waveSize, waveSpeed)
     {
         m_cubes = new GameObject[m_waveSize * m_waveSize];
         m_distances = new float[m_waveSize * m_waveSize];
