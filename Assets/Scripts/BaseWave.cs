@@ -35,7 +35,7 @@ public class BaseWave : MonoBehaviour
         {
             for (int j = 0; j < m_size; j++)
             {
-                if(m_isECS)
+                if (m_isECS)
                 {
                     instance = Instantiate(m_ecsPrefab, GetPosition(i, j) - m_centerPosition, Quaternion.identity);
                 }
@@ -53,7 +53,7 @@ public class BaseWave : MonoBehaviour
                 m_positions[i * m_size + j] = instance.transform.position;
                 m_distances[i * m_size + j] = GetDistance(i, j);
 
-                if(m_isECS)
+                if (m_isECS)
                 {
                     wave = instance.GetComponent<Wave>();
                     wave.speed = m_speed;

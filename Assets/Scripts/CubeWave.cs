@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Unity.Jobs;
 using UnityEngine.Jobs;
+using Unity.Collections;
 
 public class CubeWave : BaseWave
 {
@@ -10,19 +11,26 @@ public class CubeWave : BaseWave
     private MovementJob m_movementJob;
     private JobHandle m_jobHandle;
 
+    private NativeArray<float> m_distanceArray;
+
     private void Start()
     {
         m_camera.orthographicSize = 4 + ((float)m_size - 10) * 0.4f;
+
+        if (m_useJobSystem)
+        {
+            m_distanceArray = new NativeArray<float>(m_distances, Allocator.Persistent);
+        }
     }
 
     private void Update()
     {
-        if(m_isECS)
+        if (m_isECS)
         {
             return;
         }
 
-        if(m_useJobSystem)
+        if (m_useJobSystem)
         {
             ExecutePositionJobs();
         }
@@ -46,30 +54,23 @@ public class CubeWave : BaseWave
     {
         m_transformAccessArray.Dispose();
         m_jobHandle.Complete();
+        if (m_useJobSystem)
+        {
+            m_distanceArray.Dispose();
+        }
     }
 
     private void ExecutePositionJobs()
     {
-        m_jobHandle.Complete();
         m_movementJob = new MovementJob();
+        m_movementJob.ditances = m_distanceArray;
         m_movementJob.time = Time.realtimeSinceStartup;
-        m_movementJob.speed = -m_speed;
-        m_movementJob.center = m_centerPosition;
+        m_movementJob.speed = m_speed;
         m_jobHandle = m_movementJob.Schedule(m_transformAccessArray);
-        JobHandle.ScheduleBatchedJobs();
+    }
 
-        //for (int i = 0; i < m_size; i++)
-        //{
-        //    for (int j = 0; j < m_size; j++)
-        //    {
-        //        m_jobHandle.Complete();
-        //        m_transformAccessArray.Dispose();
-
-        //        m_transformAccessArray = new TransformAccessArray(0, -1);
-        //        m_transformAccessArray.Add(m_cubes[i * m_size + j].transform);
-        //        m_movementJob.distance = m_distances[i * m_size + j];
-        //        m_jobHandle = m_movementJob.Schedule(m_transformAccessArray);
-        //    }
-        //}
+    private void LateUpdate()
+    {
+        m_jobHandle.Complete();
     }
 }
