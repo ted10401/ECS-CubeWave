@@ -28,9 +28,13 @@ public abstract class BaseController
                 CreateCube(x, y);
             }
         }
+
+        OnCreateCubeComplete();
     }
 
     public abstract void CreateCube(int x, int y);
+
+    public virtual void OnCreateCubeComplete() { }
 
     public abstract void Tick();
 

@@ -21,6 +21,12 @@ public class App : MonoBehaviour
             case ExecuteType.HybridECS:
                 m_controller = new HybridECSController(transform, m_waveSize, m_waveSpeed);
                 break;
+            case ExecuteType.ClassicJobSystem:
+                m_controller = new ClassicJobSystemController(transform, m_waveSize, m_waveSpeed);
+                break;
+            case ExecuteType.PureECS:
+                m_controller = new PureECSController(transform, m_waveSize, m_waveSpeed);
+                break;
         }
     }
 
